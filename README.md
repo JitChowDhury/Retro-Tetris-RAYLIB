@@ -41,8 +41,8 @@ As the game progresses, the blocks fall faster — testing your reflexes and spa
 
 Here’s the roadmap followed to build the Tetris game:
 
-1. Setup the Game Loop
-2. Creating the Grid
+1. Setup the Game Loop ✔️
+2. Creating the Grid ✔️
 3. Create the Blocks
 4. Move the Blocks
 5. Rotate the Blocks
