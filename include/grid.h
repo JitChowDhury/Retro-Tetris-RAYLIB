@@ -19,4 +19,5 @@ public:
 	void Initialize();
 	void Print();
 	void Draw();
+	bool isCellOutside(int row, int column);
 };
