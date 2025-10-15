@@ -8,9 +8,11 @@ int main()
 	InitWindow(300, 600, "Tetris");
 	SetTargetFPS(60);
 
+	//creating a grid object
 	Grid grid = Grid();
 	grid.Print();
-	TBlock block = TBlock();
+	IBlock block = IBlock();
+
 
 	while (!WindowShouldClose())
 	{

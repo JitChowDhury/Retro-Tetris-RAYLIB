@@ -7,7 +7,7 @@ Grid::Grid():numRows(20),numCols(10),cellSize(30)
 	Initialize();
 	colors = GetCellColors();
 }
-
+//initialize with 0s
 void Grid::Initialize()
 {
 	for (int row = 0; row < numRows; row++)
@@ -18,7 +18,7 @@ void Grid::Initialize()
 		}
 	}
 }
-
+//print in terminal
 void Grid::Print()
 {
 	for (int row = 0; row < numRows; row++)
@@ -30,7 +30,7 @@ void Grid::Print()
 		std::cout << std::endl;
 	}
 }
-
+//draw on window
 void Grid::Draw()
 {
 	for (int row = 0; row < numRows; row++)
