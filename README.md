@@ -52,7 +52,7 @@ Here’s the roadmap followed to build the Tetris game:
 9. Create User Interface ✔️
 10. Add Score ✔️
 11. Add Next Block ✔️
-12. Add Sounds
+12. Add Sounds ✔️
 
 ---
 
