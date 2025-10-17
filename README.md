@@ -48,7 +48,7 @@ Here’s the roadmap followed to build the Tetris game:
 5. Rotate the Blocks ✔️
 6. Checking for collisions ✔️
 7. Check for completed rows ✔️
-8. Game over
+8. Game over ✔️
 9. Create User Interface
 10. Add Score
 11. Add Next Block
