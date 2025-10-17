@@ -1,5 +1,6 @@
 #include "game.h"
 #include <random>
+#include <iostream>
 
 
 Game::Game()
@@ -10,6 +11,24 @@ Game::Game()
 	nextBlock = GetRandomBlock();
 	gameOver = false;
 	score = 0;
+
+	InitAudioDevice();
+	music = LoadMusicStream("assets/sounds/music.mp3");
+	PlayMusicStream(music);
+	rotateSound = LoadSound("assets/sounds/rotate.mp3");
+	clearSound = LoadSound("assets/sounds/clear.mp3");
+	std::cout << "Rotate Sound loaded: " << (rotateSound.stream.buffer != NULL) << std::endl;
+	std::cout << "Clear Sound loaded: " << (clearSound.stream.buffer != NULL) << std::endl;
+
+
+}
+
+Game::~Game()
+{
+	UnloadSound(rotateSound);
+	UnloadSound(clearSound);
+	UnloadMusicStream(music);
+	//CloseAudioDevice();
 }
 
 Block Game::GetRandomBlock()
@@ -133,6 +152,10 @@ void Game::RotateBlock()
 		{
 			currentBlock.UndoRotation();
 		}
+		else
+		{
+			PlaySound(rotateSound);
+		}
 	}
 
 }
@@ -152,7 +175,11 @@ void Game::LockBlock()
 		gameOver = true;
 	}
 	int rowsCleared=grid.ClearFullRows();
+	if (rowsCleared > 0)
+	{
+	PlaySound(clearSound);
 	UpdateScore(rowsCleared, 0);
+	}
 }
 
 bool Game::BlockFits()

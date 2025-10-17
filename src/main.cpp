@@ -28,6 +28,7 @@ int main()
 
 	while (!WindowShouldClose())
 	{
+		UpdateMusicStream(game.music);
 		game.HandleInput();
 		if (EventTriggered(0.3))
 		{
@@ -52,9 +53,11 @@ int main()
 		DrawTextEx(font, scoreText, { 320+(170-textSize.x)/2,65}, 38, 2, WHITE);
 		DrawRectangleRounded({ 320,215,170,180 }, 0.3, 6, lightBlue);
 
+
+
 		game.Draw();
 		EndDrawing();
 	}
-
+	CloseAudioDevice();
 	CloseWindow();
 }
