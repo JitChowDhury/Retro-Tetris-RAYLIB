@@ -14,16 +14,16 @@ private:
 	bool BlockFits();
 	void Reset();
 	void UpdateScore(int linesCleared,int moveDownPoints);
-public:
-	Game();
 	Block GetRandomBlock();
 	std::vector<Block> GetAllBlocks();
-	void Draw();
-	void HandleInput();
 	void MoveBlockLeft();
 	void MoveBlockRight();
-	void MoveBlockDown();
 	Grid grid;
+public:
+	Game();
+	void Draw();
+	void HandleInput();
+	void MoveBlockDown();
 	bool gameOver;
 	int score;
 

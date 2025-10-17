@@ -10,14 +10,14 @@ Block::Block()
 
 }
 
-void Block::Draw()
+void Block::Draw(int offsetX , int offsetY)
 {
 	// Get current rotation shape
 	std::vector<Position> tiles = GetCellPositions();
 	for (Position item : tiles)
 	{
 		// Draw each tile at its grid position using the block’s color
-		DrawRectangle(item.column * cellSize + 11, item.row * cellSize + 11, cellSize - 1, cellSize - 1, colors[id]);
+		DrawRectangle(item.column * cellSize + offsetX, item.row * cellSize + offsetY, cellSize - 1, cellSize - 1, colors[id]);
 	}
 }
 
