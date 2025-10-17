@@ -25,7 +25,7 @@ int main()
 	while (!WindowShouldClose())
 	{
 		game.HandleInput();
-		if (EventTriggered(0.3))
+		if (EventTriggered(0.02))
 		{
 		   game.MoveBlockDown();
 		}

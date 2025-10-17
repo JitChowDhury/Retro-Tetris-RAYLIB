@@ -103,7 +103,7 @@ void Grid::ClearRow(int row)
 	}
 }
 
-void Grid::MoveRowDown(int row, int column)
+void Grid::MoveRowDown(int row, int numRows)
 {
 	for (int column = 0; column < numCols; column++)
 	{
