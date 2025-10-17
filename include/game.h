@@ -13,6 +13,7 @@ private:
 	void LockBlock();
 	bool BlockFits();
 	void Reset();
+	void UpdateScore(int linesCleared,int moveDownPoints);
 public:
 	Game();
 	Block GetRandomBlock();
@@ -24,6 +25,7 @@ public:
 	void MoveBlockDown();
 	Grid grid;
 	bool gameOver;
+	int score;
 
 
 };
