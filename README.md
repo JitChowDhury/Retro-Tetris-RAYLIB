@@ -50,7 +50,7 @@ Here’s the roadmap followed to build the Tetris game:
 7. Check for completed rows ✔️
 8. Game over ✔️
 9. Create User Interface ✔️
-10. Add Score
+10. Add Score ✔️
 11. Add Next Block
 12. Add Sounds
 
