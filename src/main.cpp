@@ -19,7 +19,7 @@ bool EventTriggered(double interval)
 int main()
 {
 	srand(time(0));
-
+	std::cout << RAYLIB_VERSION << std::endl;
 	InitWindow(500, 620, "Tetris");
 	SetTargetFPS(60);
 

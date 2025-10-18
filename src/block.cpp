@@ -1,5 +1,9 @@
 #include "block.h"
 
+/*
+* constructs the block object with default size rotationstate and color
+*/
+
 Block::Block()
 {
 	cellSize = 30;
@@ -9,7 +13,15 @@ Block::Block()
 	columnOffset = 0;
 
 }
-
+/**
+ * Draws the block’s current shape at the given offset.
+ *
+ * The function uses the current rotation state to get the block’s
+ * cell positions, then draws each tile using its assigned color.
+ *
+ *  offsetX The X offset (in pixels) for drawing on the screen.
+ *  offsetY The Y offset (in pixels) for drawing on the screen.
+ */
 void Block::Draw(int offsetX , int offsetY)
 {
 	// Get current rotation shape
@@ -21,11 +33,25 @@ void Block::Draw(int offsetX , int offsetY)
 	}
 }
 
+/*
+ * Moves the block by adjusting its row and column offset.
+ *
+ *  param:Number of rows to move vertically , Number of columns to move horizontally.
+ */
+
 void Block::Move(int rows,int columns)
 {
 	rowOffset += rows;
 	columnOffset += columns;
 }
+
+/*
+* Returns the blocks tile positions considering its current offset
+* 
+* each tiles position is calculated by adding the blocks current row and column offset to its base rotation state
+* 
+* return:Vector if position objects representing each occupied cell on the grid
+*/
 
 std::vector<Position> Block::GetCellPositions()
 {
@@ -40,6 +66,12 @@ std::vector<Position> Block::GetCellPositions()
 	return movedTiles;
 }
 
+/*
+* Rotates the block clockwise to the next rotation state.
+* 
+* when the rotation index reaches last it loops back to 0
+*/
+
 void Block::Rotate()
 {
 	rotationState++;
@@ -49,6 +81,11 @@ void Block::Rotate()
 	}
 }
 
+/*
+ * Rotates the block counter-clockwise (undoes the last rotation).
+ *
+ * If the rotation index becomes negative, it loops back to the last rotation state.
+ */
 void Block::UndoRotation()
 {
 	rotationState--;
