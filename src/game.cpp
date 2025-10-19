@@ -2,7 +2,9 @@
 #include <random>
 #include <iostream>
 
-
+/*
+* Constructor initializes the grid, loads sounds, and starts background music.
+*/
 Game::Game()
 {
 	grid = Grid();
@@ -13,15 +15,19 @@ Game::Game()
 	score = 0;
 
 	InitAudioDevice();
-	music = LoadMusicStream("assets/sounds/music.mp3");
+	music = LoadMusicStream("assets/sounds/country.mp3");
 	PlayMusicStream(music);
-	rotateSound = LoadSound("assets/sounds/rotate.mp3");
+	rotateSound = LoadSound("assets/sounds/sound.wav");
 	clearSound = LoadSound("assets/sounds/clear.mp3");
 	std::cout << "Rotate Sound loaded: " << (rotateSound.stream.buffer != NULL) << std::endl;
 	std::cout << "Clear Sound loaded: " << (clearSound.stream.buffer != NULL) << std::endl;
 
 
 }
+
+/*
+*  Destructor unloads sounds and music from memory
+*/
 
 Game::~Game()
 {
@@ -30,7 +36,9 @@ Game::~Game()
 	UnloadMusicStream(music);
 	//CloseAudioDevice();
 }
-
+/**
+ *Returns a random block and removes it from the pool .
+ */
 Block Game::GetRandomBlock()
 {
 	if (blocks.empty())
@@ -42,12 +50,17 @@ Block Game::GetRandomBlock()
 	blocks.erase(blocks.begin() + randomIndex);
 	return block;
 }
-
+/*
+*  Returns a vector containing all seven block types.
+*/
 std::vector<Block> Game::GetAllBlocks()
 {
 	return { IBlock(),JBlock(),LBlock(),OBlock(),SBlock(),TBlock(),ZBlock() };
 }
 
+/*
+* Draws the grid, current falling block, and next block preview.
+*/
 void Game::Draw()
 {
 	grid.Draw();
@@ -65,7 +78,9 @@ void Game::Draw()
 		break;
 	}
 }
-
+/*
+* Handles keyboard inputs (A/D/S/W) and restart logic.
+*/
 void Game::HandleInput()
 {
 	int keyPressed = GetKeyPressed();
@@ -91,7 +106,9 @@ void Game::HandleInput()
 		break;
 	}
 }
-
+/*
+* Moves the block left if it remains inside and fits.
+*/
 void Game::MoveBlockLeft()
 {
 	if (!gameOver)
@@ -103,7 +120,9 @@ void Game::MoveBlockLeft()
 		}
 	}
 }
-
+/*
+* Moves the block right if it remains inside and fits.
+*/
 void Game::MoveBlockRight()
 {
 	if (!gameOver)
@@ -129,7 +148,9 @@ void Game::MoveBlockDown()
 	}
 
 }
-
+/*
+* Checks if any tile of the current block is outside the grid.
+*/
 
 bool Game::IsBlockOutside()
 {
@@ -143,7 +164,9 @@ bool Game::IsBlockOutside()
 	}
 	return false;
 }
-
+/*
+* Rotates the block and reverts if rotation causes invalid placement.
+*/
 void Game::RotateBlock()
 {
 	if (!gameOver) {
@@ -159,7 +182,9 @@ void Game::RotateBlock()
 	}
 
 }
-
+/*
+* Locks the current block into the grid, checks for cleared rows, and spawns the next block.
+*/
 void Game::LockBlock()
 {
 	std::vector<Position> tiles = currentBlock.GetCellPositions();
@@ -181,7 +206,9 @@ void Game::LockBlock()
 	UpdateScore(rowsCleared, 0);
 	}
 }
-
+/*
+* Checks if the current block can fit in its position without collision.
+*/
 bool Game::BlockFits()
 {
 	std::vector<Position> tiles = currentBlock.GetCellPositions();
@@ -195,6 +222,10 @@ bool Game::BlockFits()
 	return true;
 }
 
+/*
+* Resets the game to its initial state (used after game over).
+*/
+
 void Game::Reset()
 {
 	grid.Initialize();
@@ -203,6 +234,9 @@ void Game::Reset()
 	nextBlock = GetRandomBlock();
 	score = 0;
 }
+/*
+* update player score
+*/
 
 void Game::UpdateScore(int linesCleared, int moveDownPoints)
 {
