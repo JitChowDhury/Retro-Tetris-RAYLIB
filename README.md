@@ -6,9 +6,9 @@
   <img src="https://img.shields.io/badge/Game-Tetris-orange?style=for-the-badge"/>
 </p>
 
-<!-- <p align="center">
-  <img src="preview.gif" alt="Tetris Preview" width="600"/>
-</p> -->
+<p align="center">
+  <img src="screenshot.jpg" alt="Tetris Preview" width="600"/>
+</p>
 
 ---
 
