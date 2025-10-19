@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="screenshot.jpg" alt="Tetris Preview" width="600"/>
+  <img src="screenshot.jpg" alt="Tetris Preview"/>
 </p>
 
 ---
